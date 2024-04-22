@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"learn/model"
 	"math/bits"
 	"math/rand"
 	"time"
@@ -57,9 +58,6 @@ func main() {
 	//下段处理index = ((index + index%SizeLine[i])+1)/len(15)
 	fmt.Println(ReplaceColums(resul, SizeLine, arrs, 13, 0x0e, replaceIcon, true, false))
 	//fmt.Println(num)
-	fmt.Println("==============")
-	fmt.Println(LenRandomValueRandom(4, 5))
-	fmt.Println("==============")
 	fmt.Println(1 % 3000)
 	//计算全线排列的函数
 	Axis := []int{3, 3, 3, 3, 3}
@@ -162,14 +160,6 @@ func ReplaceColums(resul []int, SizeLine []int, icons [][]int, index int, colums
 	for i, v := range SizeLine {
 		ret[i] = make([]int, v)
 	}
-	//if turn {
-	//	if b {
-	//		index = index - index%3
-	//	} else {
-	//		index = (index + (3 - index%3) + 15) % 15
-	//		fmt.Println(index)
-	//	}
-	//}
 	IterateIcons(resul, SizeLine, icons, func(i, j int, iconId int) {
 		iss := index
 		if turn {
@@ -211,40 +201,6 @@ func RandomValues[T uint32 | float32](values []T) uint32 {
 		}
 	}
 	return 0
-}
-
-// 随机生成长度数值范围的数组
-func LenRandomValueRandom(maxLen int, maxValue int) []int {
-	rand.Seed(time.Now().UnixNano())
-	arrLen := int(rand.Float64() * float64(maxLen))
-	arr := make([]int, arrLen)
-	for i, _ := range arr {
-		arr[i] = int(rand.Float64() * float64(maxValue))
-	}
-	return arr
-}
-
-// 随机生成长度数值范围的数组相邻不等
-func LenRandomValueRandomNoDENG(maxLen int, maxValue int) []int {
-	rand.Seed(time.Now().UnixNano())
-	arrLen := int(rand.Float64() * float64(maxLen))
-	arr := make([]int, arrLen)
-	for i, _ := range arr {
-		arr[i] = int(rand.Float64() * float64(maxValue))
-		for i > 0 && arr[i] == arr[i-1] {
-			arr[i] = int(rand.Float64() * float64(maxValue))
-		}
-	}
-	return arr
-}
-
-// 数组拷贝器
-func copyArray(a []int) []int {
-	arr := make([]int, len(a))
-	for i, _ := range arr {
-		arr[i] = a[i]
-	}
-	return arr
 }
 
 func copyAy() {
@@ -405,7 +361,7 @@ func OneMinIndexMain() {
 	maxValue := 20
 	testTimes := 100000
 	for i := range testTimes {
-		arr := LenRandomValueRandomNoDENG(maxLen, maxValue)
+		arr := model.LenRandomValueRandomNoDENG(maxLen, maxValue)
 		ans := oneMinIndex(arr)
 		if !checkOneMinIndex(arr, ans) {
 			fmt.Println("第", i, "次", "出错啦", arr)
@@ -419,88 +375,3 @@ func OneMinIndexMain() {
 		}
 	}
 }
-
-// 计算全线排列
-//func (s *SlotsConfig) CalAllLines() {
-//	if len(s.Lines) > 0 { //算过了不再算
-//		return
-//	}
-//	count := uint32(1)
-//	for _, v := range s.Axis {
-//		count *= v
-//	}
-//	columSize := len(s.Axis)
-//	s.Lines = make([][]uint32, count)
-//	for k := range count {
-//		item := make([]uint32, columSize)
-//		pre := uint32(1)
-//		for i, v := range s.Axis {
-//			pre *= v
-//			item[i] = (k/(count/pre))%v + 1
-//		}
-//		s.Lines[k] = item
-//	}
-//}
-
-//必须从左到右
-// 假设的f(x)函数
-//func f(x, column int, board [5][3]int) int {
-//	count := 0
-//	for i := 0; i < 3; i++ {
-//		if board[column][i] == x || board[column][i] == 5 {
-//			count++
-//		}
-//	}
-//	return count
-//}
-//
-//// 计算中奖线和消除图标的索引
-//func calculateWays(board [5][3]int) (map[int]int, int) {
-//	winLines := make(map[int]int)
-//	var eliminationIndex int
-//
-//	// 对于每个可能的图标x
-//	for x := 1; x <= 10; x++ {
-//		multiplier := 1
-//		for column := 0; column < 5; column++ {
-//			count := f(x, column, board)
-//			if count == 0 { // 如果这一列没有图标x，也没有万能棋子5，则中断循环
-//				multiplier = 0
-//				break
-//			}
-//			multiplier *= count
-//		}
-//		winLines[x] = multiplier
-//	}
-//
-//	// 假设我们消除每列上的第一个图标，计算消除图标的索引
-//	for column := 0; column < 5; column++ {
-//		eliminationIndex |= (1 << (column * 3))
-//	}
-//
-//	return winLines, eliminationIndex
-//}
-//
-//// 填充棋盘
-//func fillBoard() [5][3]int {
-//	var board [5][3]int
-//	rand.Seed(time.Now().UnixNano())
-//	for i := range board {
-//		for j := range board[i] {
-//			board[i][j] = rand.Intn(10) + 1 // 生成1到10的随机数
-//		}
-//	}
-//	return board
-//}
-//
-//func main() {
-//	board := fillBoard()
-//	fmt.Println("棋盘如下：")
-//	for _, row := range board {
-//		fmt.Println(row)
-//	}
-//
-//	winLines, eliminationIndex := calculateWays(board)
-//	fmt.Println("中奖线如下：", winLines)
-//	fmt.Println("消除图标的索引（编码）：", eliminationIndex)
-//}
