@@ -88,9 +88,7 @@ func main() {
 		i = i - i%3
 		fmt.Println(i)
 	}
-
-	copyAy()
-	OneMinIndexMain()
+	//OneMinIndexMain()
 	rand.New(rand.NewSource(time.Now().UnixNano() + 1))
 	T := []int{30000, 2200, 1200, 475, 60}
 
@@ -201,14 +199,6 @@ func RandomValues[T uint32 | float32](values []T) uint32 {
 		}
 	}
 	return 0
-}
-
-func copyAy() {
-	a := 10
-	for i := 0; i < a; i++ {
-		i := 1 << 25
-		fmt.Println(i)
-	}
 }
 
 // 二分实现(一个有序数组中有没有指定数字) [1,2,2,3,5,6,8,9] 4-false 5-true
