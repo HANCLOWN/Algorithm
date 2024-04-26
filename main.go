@@ -3,127 +3,124 @@ package main
 import (
 	"fmt"
 	"learn/model"
-	"math/bits"
 	"math/rand"
-	"time"
 )
 
 func main() {
-	//前缀和数组29.00
-	elements := []int{1, 2, 3, 4, 5}
-	a := 3
-	c := 0
-
-	// 调用ProcessElements函数，传递elements数组和一个匿名函数作为参数。
-	// 这个匿名函数将数组中的每个元素加倍。
-	ProcessElements(elements, func(i, j int, iconId int) {
-		fmt.Println(((1 << i) & a) > 0)
-		if ((1 << i) & a) > 0 {
-			return
-		}
-		if i > 2 {
-			c++
-		}
-	})
-	fmt.Println(c)
-	fmt.Println("==============")
-	realIconId := uint64(0)
-	realIconId = (1 << 5) | realIconId
-	awardIconId := bits.TrailingZeros64(realIconId)
-	fmt.Println(realIconId, awardIconId)
-	fmt.Println("==============")
-	zhou1 := []int{1, 4, 7, 8, 5, 2, 3, 6, 9}
-	zhou2 := []int{7, 8, 9, 6, 5, 4, 1, 2, 3}
-	zhou3 := []int{6, 5, 4, 7, 8, 1, 2, 3, 9}
-	zhou4 := []int{5, 2, 6, 8, 4, 3, 9, 1, 7}
-	zhou5 := []int{4, 8, 6, 2, 1, 7, 9, 3, 5}
-	SizeLine := []int{3, 3, 3, 3, 3}
-	replaceIcon := []int{10, 10, 10, 11, 11, 11, 12, 12, 12, 13, 13, 13, 11, 11, 11}
-	//bonusId :=11
-	resul := []int{1, 2, 3, 2, 1}
-	arrs := [][]int{}
-	arrs = append(arrs, zhou1)
-	arrs = append(arrs, zhou2)
-	arrs = append(arrs, zhou3)
-	arrs = append(arrs, zhou4)
-	arrs = append(arrs, zhou5)
-	for i := 0; i < len(SizeLine); i++ {
-		//这里没+1是因为配置不会从0开始
-		res := AxisGetter(resul, arrs, i, SizeLine[i])
-		fmt.Println(res)
-	}
-	fmt.Println("==============////////////////")
-	//num := CountIcon(resul, SizeLine, arrs, 4000, 0)
-	//本段处理 icons[0][index] == bonusId index = index - index%SizeLine[i]
-	//下段处理index = ((index + index%SizeLine[i])+1)/len(15)
-	fmt.Println(ReplaceColums(resul, SizeLine, arrs, 13, 0x0e, replaceIcon, true, false))
-	//fmt.Println(num)
-	fmt.Println(1 % 3000)
-	//计算全线排列的函数
-	Axis := []int{3, 3, 3, 3, 3}
-	var count = 1
-	for _, v := range Axis {
-		count *= v
-	}
-	columSize := len(Axis)
-	for k := range count {
-		item := make([]int, columSize)
-		//pre := 1
-		pre := k
-		for i, v := range Axis {
-			//pre *= v
-			//item[i] = (k/(count/pre))%v + 1
-			item[i] = pre%v + 1
-			pre /= v
-		}
-		fmt.Println("==============", k)
-		fmt.Println("==============", item)
-		if k > 10 {
-			break
-		}
-	}
-	fmt.Println("==============")
-	index := 100
-	for i := range index {
-		i = i - i%3
-		fmt.Println(i)
-	}
-	//OneMinIndexMain()
-	rand.New(rand.NewSource(time.Now().UnixNano() + 1))
-	T := []int{30000, 2200, 1200, 475, 60}
-
-	testTimes := 30
-	spin := 100
-	a = 0
-	for l := range spin {
-		count = 0
-		for i := range testTimes {
-			val := rand.Float32() * float32(30000+2200+1200+475+60)
-			sum := float32(0)
-			for k, weight := range T {
-				sum += float32(weight)
-				if val <= sum {
-					if k > 0 {
-						count++
-					}
-					c = i
-					//fmt.Println("第", i, "次", "结果", k)
-					break
-				}
-			}
-		}
-		c = l
-		if (float64(count) / float64(testTimes)) >= 0.117 {
-			a++
-		}
-		//fmt.Println("第", l, "次", "结果", float64(count)/float64(testTimes)*30)
-
-	}
-	fmt.Println("结果", a)
-
-	ans := oneMinIndex([]int{10, 18, 10, 4, 15, 14, 7})
-	fmt.Println("==============", ans)
-
+	////前缀和数组29.00
+	//elements := []int{1, 2, 3, 4, 5}
+	//a := 3
+	//c := 0
+	//
+	//// 调用ProcessElements函数，传递elements数组和一个匿名函数作为参数。
+	//// 这个匿名函数将数组中的每个元素加倍。
+	//ProcessElements(elements, func(i, j int, iconId int) {
+	//	fmt.Println(((1 << i) & a) > 0)
+	//	if ((1 << i) & a) > 0 {
+	//		return
+	//	}
+	//	if i > 2 {
+	//		c++
+	//	}
+	//})
+	//fmt.Println(c)
+	//fmt.Println("==============")
+	//realIconId := uint64(0)
+	//realIconId = (1 << 5) | realIconId
+	//awardIconId := bits.TrailingZeros64(realIconId)
+	//fmt.Println(realIconId, awardIconId)
+	//fmt.Println("==============")
+	//zhou1 := []int{1, 4, 7, 8, 5, 2, 3, 6, 9}
+	//zhou2 := []int{7, 8, 9, 6, 5, 4, 1, 2, 3}
+	//zhou3 := []int{6, 5, 4, 7, 8, 1, 2, 3, 9}
+	//zhou4 := []int{5, 2, 6, 8, 4, 3, 9, 1, 7}
+	//zhou5 := []int{4, 8, 6, 2, 1, 7, 9, 3, 5}
+	//SizeLine := []int{3, 3, 3, 3, 3}
+	//replaceIcon := []int{10, 10, 10, 11, 11, 11, 12, 12, 12, 13, 13, 13, 11, 11, 11}
+	////bonusId :=11
+	//resul := []int{1, 2, 3, 2, 1}
+	//arrs := [][]int{}
+	//arrs = append(arrs, zhou1)
+	//arrs = append(arrs, zhou2)
+	//arrs = append(arrs, zhou3)
+	//arrs = append(arrs, zhou4)
+	//arrs = append(arrs, zhou5)
+	//for i := 0; i < len(SizeLine); i++ {
+	//	//这里没+1是因为配置不会从0开始
+	//	res := AxisGetter(resul, arrs, i, SizeLine[i])
+	//	fmt.Println(res)
+	//}
+	//fmt.Println("==============////////////////")
+	////num := CountIcon(resul, SizeLine, arrs, 4000, 0)
+	////本段处理 icons[0][index] == bonusId index = index - index%SizeLine[i]
+	////下段处理index = ((index + index%SizeLine[i])+1)/len(15)
+	//fmt.Println(ReplaceColums(resul, SizeLine, arrs, 13, 0x0e, replaceIcon, true, false))
+	////fmt.Println(num)
+	//fmt.Println(1 % 3000)
+	////计算全线排列的函数
+	//Axis := []int{3, 3, 3, 3, 3}
+	//var count = 1
+	//for _, v := range Axis {
+	//	count *= v
+	//}
+	//columSize := len(Axis)
+	//for k := range count {
+	//	item := make([]int, columSize)
+	//	//pre := 1
+	//	pre := k
+	//	for i, v := range Axis {
+	//		//pre *= v
+	//		//item[i] = (k/(count/pre))%v + 1
+	//		item[i] = pre%v + 1
+	//		pre /= v
+	//	}
+	//	fmt.Println("==============", k)
+	//	fmt.Println("==============", item)
+	//	if k > 10 {
+	//		break
+	//	}
+	//}
+	//fmt.Println("==============")
+	//index := 100
+	//for i := range index {
+	//	i = i - i%3
+	//	fmt.Println(i)
+	//}
+	////OneMinIndexMain()
+	//rand.New(rand.NewSource(time.Now().UnixNano() + 1))
+	//T := []int{30000, 2200, 1200, 475, 60}
+	//
+	//testTimes := 30
+	//spin := 100
+	//a = 0
+	//for l := range spin {
+	//	count = 0
+	//	for i := range testTimes {
+	//		val := rand.Float32() * float32(30000+2200+1200+475+60)
+	//		sum := float32(0)
+	//		for k, weight := range T {
+	//			sum += float32(weight)
+	//			if val <= sum {
+	//				if k > 0 {
+	//					count++
+	//				}
+	//				c = i
+	//				//fmt.Println("第", i, "次", "结果", k)
+	//				break
+	//			}
+	//		}
+	//	}
+	//	c = l
+	//	if (float64(count) / float64(testTimes)) >= 0.117 {
+	//		a++
+	//	}
+	//	//fmt.Println("第", l, "次", "结果", float64(count)/float64(testTimes)*30)
+	//
+	//}
+	//fmt.Println("结果", a)
+	//
+	//ans := oneMinIndex([]int{10, 18, 10, 4, 15, 14, 7})
+	//fmt.Println("==============", ans)
 }
 
 func AxisGetter(iconInfo []int, icons [][]int, i, j int) int {
