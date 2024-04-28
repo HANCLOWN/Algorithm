@@ -121,6 +121,18 @@ func main() {
 	//
 	//ans := oneMinIndex([]int{10, 18, 10, 4, 15, 14, 7})
 	//fmt.Println("==============", ans)
+	//y := Y{}
+	//y.method() // 调用 Y 中嵌套的 X 类型的 method，X 仍然是接收者
+}
+
+type X struct{}
+
+func (x X) method() {
+	fmt.Println("X's method")
+}
+
+type Y struct {
+	X
 }
 
 func AxisGetter(iconInfo []int, icons [][]int, i, j int) int {

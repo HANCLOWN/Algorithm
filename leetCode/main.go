@@ -14,4 +14,7 @@ func main() {
 	//grid := [][]int{[]int{-15, 1, 3}, []int{15, 7, 12}, []int{5, 6, -2}}
 	//grid := [][]int{[]int{0}}
 	//fmt.Println(findColumnWidth(grid))
+	//1017
+	//fmt.Println(baseNeg2(3))
+	//fmt.Println(baseSwitch(5, -3))
 }
