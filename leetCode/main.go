@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 func main() {
 	//2739
 	//fmt.Println(distanceTraveled(9, 30))
@@ -17,4 +19,11 @@ func main() {
 	//1017
 	//fmt.Println(baseNeg2(3))
 	//fmt.Println(baseSwitch(5, -3))
+	grid := [][]int{
+		{0, 1, -1},
+		{1, 0, -1},
+		{1, 1, 1},
+	}
+	result := cherryPickup(grid)
+	fmt.Println(result)
 }
