@@ -86,7 +86,7 @@ func main() {
 	//	i = i - i%3
 	//	fmt.Println(i)
 	//}
-	////OneMinIndexMain()
+	//OneMinIndexMain()
 	//rand.New(rand.NewSource(time.Now().UnixNano() + 1))
 	//T := []int{30000, 2200, 1200, 475, 60}
 	//
@@ -123,6 +123,7 @@ func main() {
 	//fmt.Println("==============", ans)
 	//y := Y{}
 	//y.method() // 调用 Y 中嵌套的 X 类型的 method，X 仍然是接收者
+	model.PrintMemUsage()
 }
 
 type X struct{}
