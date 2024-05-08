@@ -19,11 +19,12 @@ func main() {
 	//1017
 	//fmt.Println(baseNeg2(3))
 	//fmt.Println(baseSwitch(5, -3))
-	grid := [][]int{
-		{0, 1, -1},
-		{1, 0, -1},
-		{1, 1, 1},
-	}
-	result := cherryPickup(grid)
-	fmt.Println(result)
+	//grid := [][]int{
+	//	{0, 1, -1},
+	//	{1, 0, -1},
+	//	{1, 1, 1},
+	//}
+	//result := cherryPickup(grid)
+	//fmt.Println(result)
+	fmt.Println(wateringPlants([]int{1, 1, 1, 4, 2, 3}, 4))
 }
