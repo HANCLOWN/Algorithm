@@ -26,5 +26,7 @@ func main() {
 	//}
 	//result := cherryPickup(grid)
 	//fmt.Println(result)
-	fmt.Println(wateringPlants([]int{1, 1, 1, 4, 2, 3}, 4))
+	//fmt.Println(wateringPlants([]int{1, 1, 1, 4, 2, 3}, 4))
+	fmt.Println(minimumRefill([]int{2, 2, 3, 3}, 5, 5))
+	//fmt.Println("curCapacityA:", curCapacityA, "curCapacityB:", curCapacityB, "res:", res, "i:", i, "c-i-1:", c-i-1)
 }

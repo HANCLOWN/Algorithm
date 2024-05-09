@@ -1,4 +1,4 @@
-module learn
+module Algorithm
 
 go 1.22
 

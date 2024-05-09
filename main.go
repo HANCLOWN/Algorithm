@@ -1,8 +1,8 @@
 package main
 
 import (
+	"Algorithm/model"
 	"fmt"
-	"learn/model"
 	"math/rand"
 )
 
