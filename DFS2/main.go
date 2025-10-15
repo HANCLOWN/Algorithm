@@ -69,8 +69,8 @@ func main() {
 		{1, 1, 30, 31, 3},
 		{3, 1, 5, 4, 4},
 		{4, 4, 5, 5, 5},
-		{1, 5, 61, 62, 63},
-		{6, 6, 21, 22, 23},
+		{1, 5, 1, 1, 63},
+		{6, 6, 1, 1, 23},
 	}
 
 	kindCount, eliminatedCoords := eliminateNumbersModified(board, 3)
